@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>priority</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>AddOption Onchange</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || newValue === '') {
+        return;
+    }
+    var Choices = ['Official', 'Unofficial', 'Order'];
+    jslog('This is JSLOg message');
+	console.log('This is console log message');
+    if (newValue == '3') {
+        for (var i = 0; i < Choices.length; i++) {
+            g_form.addOption('u_request_type', i, Choices[i]);
+        }
+    } else {
+        // don't use clearOptions or clearValue() methods to this as clearOptions() method removes all the options and ClearValue() clears the value but it does not remove option and user can reselect the option. 
+        for (var x = 0; x < Choices.length; x++) {
+            g_form.removeOption('u_request_type', x);
+        }
+    }
+    try {
+        HelloWorld();
+    } catch (err) {
+        jslog('a Javascript run time error occured: ' + err.message);
+    }
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>sandeeplebaka</sys_created_by>
+        <sys_created_on>2020-04-25 14:14:22</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d923fa072f1c101000be55f62799b6f0</sys_id>
+        <sys_mod_count>33</sys_mod_count>
+        <sys_name>AddOption Onchange</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_client_d923fa072f1c101000be55f62799b6f0</sys_update_name>
+        <sys_updated_by>sandeeplebaka</sys_updated_by>
+        <sys_updated_on>2020-04-27 06:36:34</sys_updated_on>
+        <table>x_58872_needit_needit</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
